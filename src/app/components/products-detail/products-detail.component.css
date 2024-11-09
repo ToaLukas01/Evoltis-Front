@@ -1,0 +1,15 @@
+.title{
+    background-color: gray;
+    padding: 30px;
+    text-align: center;
+    color: aliceblue;
+}
+
+.card {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.container{
+    margin: 1% 30%;
+}

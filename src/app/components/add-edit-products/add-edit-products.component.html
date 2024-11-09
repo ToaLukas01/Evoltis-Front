@@ -1,0 +1,48 @@
+<div class="title">
+    <h1>Product: {{title}}</h1>
+</div>
+
+<app-spiner-bar *ngIf="loading"></app-spiner-bar>
+
+<div class="container">
+    <mat-card class="card">
+        <h3>
+            Dates of the product
+        </h3>
+
+        <form [formGroup]="form" (ngSubmit)="addEditProduct()">
+            <mat-grid-list cols="2" rowHeight="80px">
+
+                <mat-grid-tile [colspan]="2" >
+                    <mat-form-field  class="formName" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input formControlName="name" matInput placeholder="Name">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="2">
+                    <mat-form-field class="formName" appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <input formControlName="description" matInput placeholder="Description">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="2" >
+                    <mat-form-field  class="formName" appearance="outline">
+                        <mat-label>price</mat-label>
+                        <input formControlName="price" matInput placeholder="Price">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="2">
+                    <button [disabled]="form.invalid" type="submit" mat-raised-button color="warn">Acept</button>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="2">
+                    <button mat-raised-button color="primary" routerLink="/ProductsList">Back to List</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+
+    </mat-card>
+</div>

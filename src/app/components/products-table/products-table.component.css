@@ -1,0 +1,44 @@
+
+.titulo {
+    background-color: gray;
+    padding: 30px;
+    color: aliceblue;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+  }
+
+.container{
+    margin: 0 10%;
+}
+
+td, th {
+    width: 15%;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+.delete {
+    cursor: pointer;
+    color: rgb(192, 22, 22);
+}
+
+.edit {
+    cursor: pointer;
+    color: rgb(22, 167, 192);
+}
+
+.search {
+    cursor: pointer;
+    color: rgb(56, 78, 204);
+}
+
+.add {
+    cursor: pointer;
+    color: rgb(13, 212, 146);
+}

@@ -1,0 +1,21 @@
+
+<div class="title">
+    <h2>Pets Detaills</h2>
+</div>
+
+<app-spiner-bar *ngIf="loading"></app-spiner-bar>
+
+<div class="container" *ngIf="product!=null">
+
+    <mat-card class="card">
+        <mat-card-title>{{product.Name}}</mat-card-title>
+        <mat-card-content>
+            <p><strong>Description: </strong> {{product.Description}}</p>
+            <p><strong>Price: </strong> {{product.Price}}</p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card-actions >
+        <button mat-raised-button color="primary" routerLink="/ProductsList">Back to List</button>
+    </mat-card-actions>
+</div>
