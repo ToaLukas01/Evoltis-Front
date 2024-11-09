@@ -28,7 +28,7 @@ export class ProductsTableComponent implements OnInit, AfterViewInit{
   hasError: boolean = false;
   noData: boolean = false;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator; // el operador "!" indica que la variable no es nula
+  @ViewChild(MatPaginator) paginator!: MatPaginator; 
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private snackbar: MatSnackBar, private _productService: ProductsService){}
@@ -40,7 +40,7 @@ export class ProductsTableComponent implements OnInit, AfterViewInit{
   
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-    this.paginator._intl.itemsPerPageLabel = "Pets per page";
+    this.paginator._intl.itemsPerPageLabel = "pagina";
     this.dataSource.sort = this.sort;
   }
 
@@ -51,20 +51,21 @@ export class ProductsTableComponent implements OnInit, AfterViewInit{
 
     this._productService.getProducts().subscribe({
       next: (data) => {
+        console.log('Datos recibidos:', data);
         if (!data || data.length === 0) {
           this.noData = true;
           this.dataSource.data = [];
-          this.showMessage('No pets available at the moment.');
+          this.showMessage('No hay productos disponibles.');
         } else {
           this.dataSource.data = data;
         }
+        this.loading = false;
       },
       error: (error) => {
+        console.error('Error al obtener productos:', error);
         this.hasError = true;
         this.dataSource.data = [];
-        this.showMessage('Unable to connect to the server. Please try again later.');
-      },
-      complete: () => {
+        this.showMessage('No se pudo conectar con el servidor. Por favor intente más tarde.');
         this.loading = false;
       }
     });
@@ -94,7 +95,7 @@ export class ProductsTableComponent implements OnInit, AfterViewInit{
 
   mesageDeletedSucces(){
     setTimeout(() => {
-      this.snackbar.open('the Pet has been deleted from the list', '', {
+      this.snackbar.open('the Product has been deleted from the list', '', {
         duration: 3000,
         horizontalPosition:'center'
       });

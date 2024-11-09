@@ -1,4 +1,4 @@
 
 export const environment = {
-    endpoint: "https://localhost:44388/"
+    endpoint: "https://localhost:44388"
 }

@@ -16,6 +16,7 @@ export class ProductsService {
   }
 
   getProducts(): Observable<Product[]> {
+    console.log("Ingresando al meto Get Lista");
     return this.http.get<Product[]>(this.apiUrl)
       .pipe(
         catchError(this.handleError)
@@ -53,13 +54,13 @@ export class ProductsService {
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Ha ocurrido un error en el servidor';
     
-    if (error.error instanceof ErrorEvent) {
-      // Error del lado del cliente
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      // Error del lado del servidor
+    if (error.status === 0) {
+      // Error de cliente o problemas de red
+      errorMessage = 'Error de conexión. Por favor verifica tu conexión a internet.';
+  } else {
+      // Error del backend
       errorMessage = `Código de error: ${error.status}\nMensaje: ${error.message}`;
-    }
+  }
     
     console.error(errorMessage);
     return throwError(() => new Error(errorMessage));
